@@ -6,7 +6,7 @@ import requests
 import rtoml
 from poetry.console.commands.command import Command
 
-from poetry_plugin_yanked_check.status import HTTP_200_OK
+from poetry_plugin_yanked_check import status
 
 
 class YankedCheckerCommand(Command):
@@ -61,7 +61,7 @@ class YankedCheckerCommand(Command):
                     timeout=timeout_seconds,
                 )
 
-                if response.status_code == HTTP_200_OK:
+                if response.status_code == status.HTTP_200_OK:
                     package_info = response.json()
                     yanked = package_info["info"].get("yanked", False)
 
