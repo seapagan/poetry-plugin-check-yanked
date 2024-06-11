@@ -14,14 +14,14 @@ repository = "https://github.com/seapagan/poetry-plugin-yanked-check"
 "Bug Tracker" = "https://github.com/seapagan/poetry-plugin-yanked-check/issues"
 "Changelog" = "https://github.com/seapagan/poetry-plugin-yanked-check/blob/main/CHANGELOG.md"
 
-[tool.poetry.plugins."poetry-appliction.plugin"]
+[tool.poetry.plugins."poetry.application.plugin"]
 checker = "poetry_plugin_yanked_check.main:YankedCheckerPlugin"
 
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0"
 poetry = "^1.8.3"
 rtoml = "^0.10.0"
-requests = "^2.32.3"
+requests = "2.32.0"
 
 [build-system]
 requires = ["poetry-core"]

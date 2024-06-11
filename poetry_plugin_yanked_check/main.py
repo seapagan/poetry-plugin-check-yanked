@@ -8,10 +8,8 @@ from pathlib import Path
 
 import requests
 import rtoml
-from cleo.io.io import IO
 from poetry.console.commands.command import Command
 from poetry.plugins.application_plugin import ApplicationPlugin
-from poetry.poetry import Poetry
 
 from poetry_plugin_yanked_check.status import HTTP_200_OK
 
@@ -86,14 +84,12 @@ def factory() -> YankedCheckerCommand:
     return YankedCheckerCommand()
 
 
-class PoetryYankedCheckerPlugin(ApplicationPlugin):
+class YankedCheckerPlugin(ApplicationPlugin):
     """Define the 'yanked-checker' plugin."""
 
-    def activate(self, poetry: Poetry, _: IO) -> None:
+    def activate(self, application: ApplicationPlugin) -> None:
         """Called after the plugin is loaded."""
-        poetry.application.command_loader.register_factory(
-            "check-yanked", factory
-        )
+        application.command_loader.register_factory("check-yanked", factory)
 
 
 if __name__ == "__main__":
