@@ -40,7 +40,10 @@ pip install poetry-plugin-check-yanked
 ## Usage
 
 The plugin adds a new command to Poetry, `check-yanked`, which can be used to
-check if any of the dependencies in the `pyproject.toml` file have been yanked.
+check if any of the dependencies in the `pyproject.toml` file have been yanked
+from PyPI by their maintainers. There is usually a pretty good reason for a
+package to be yanked, so it's a good idea to check for yanked packages in your
+project.
 
 ```bash
 poetry check-yanked
