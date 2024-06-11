@@ -25,6 +25,7 @@ poetry-plugin-yanked-check = "poetry_plugin_yanked_check.main:app"
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0"
 
+poetry = "^1.8.3"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
@@ -35,10 +36,10 @@ build-backend = "poetry.core.masonry.api"
 mypy = "^1.8.0"
 pre-commit = "^3.6.2"
 pymarkdownlnt = "^0.9.12"
-ruff = "^0.3.0"
+ruff = "^0.4.0"
 
 # task runner
-poethepoet = "^0.25.0"
+poethepoet = "^0.26.0"
 
 # testing
 faker = ">=23.3.0"
@@ -123,7 +124,7 @@ lint.extend-ignore = [
 ] # these are ignored for ruff formatting
 
 src = ["poetry_plugin_yanked_check"]
-target-version = "py39" # minimum python version supported
+target-version = "py39"              # minimum python version supported
 
 [tool.ruff.format]
 indent-style = "space"
@@ -160,14 +161,14 @@ addopts = [
   "--cov-report",
   "term-missing",
   "--cov-report",
-  "html"
+  "html",
 ]
 filterwarnings = []
 mock_use_standalone_module = true
 markers = [
   "unit: Unit tests",
   "integration: Integration tests",
-  "rewrite: Tests need Rewriting", # will be skipped automatically
+  "rewrite: Tests need Rewriting",  # will be skipped automatically
 ]
 
 [tool.coverage.run]
