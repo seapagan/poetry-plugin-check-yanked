@@ -14,6 +14,11 @@ class YankedCheckerCommand(Command):
 
     name = "check-yanked"
     description = "Check for yanked packages in the poetry.lock file"
+    help = (
+        "The <c1>check-yanked</> Command checks through the poetry.lock file, "
+        "and reports any packages that have been yanked fom PyPI along with "
+        "the version number and reason."
+    )
 
     def handle(self) -> int:
         """Handle the command."""
