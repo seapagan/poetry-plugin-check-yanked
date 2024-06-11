@@ -10,22 +10,19 @@ packages = [{ include = "poetry_plugin_yanked_check" }]
 repository = "https://github.com/seapagan/poetry-plugin-yanked-check"
 
 [tool.poetry.urls]
-# customize the below URLs to point to your own GitHub repo. These will be
-# shown on [Pypi.org](https://pypi.org/) if you are creating a public package.
 "Pull Requests" = "https://github.com/seapagan/poetry-plugin-yanked-check/pulls"
 "Bug Tracker" = "https://github.com/seapagan/poetry-plugin-yanked-check/issues"
 "Changelog" = "https://github.com/seapagan/poetry-plugin-yanked-check/blob/main/CHANGELOG.md"
 
-[tool.poetry.scripts]
-# rename "poetry-plugin-yanked-check" below to change the executable name. You can also
-# add more scripts if your package offers multiple commands.
-poetry-plugin-yanked-check = "poetry_plugin_yanked_check.main:app"
-
+[tool.poetry.plugins."poetry-appliction.plugin"]
+checker = "poetry_plugin_yanked_check.main:YankedCheckerPlugin"
 
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0"
-
 poetry = "^1.8.3"
+rtoml = "^0.10.0"
+requests = "^2.32.3"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
