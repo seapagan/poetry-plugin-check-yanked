@@ -75,6 +75,14 @@ class CheckYankedCommand(Command):
                             "yanked_reason"
                         )
                         yanked_packages.append((name, version, yanked_reason))
+                        if self.io.is_verbose():
+                            self.line(
+                                f"Checking package: {name} - <fg=red>Yanked</> "
+                                f'(<fg=yellow>'
+                                f'{package_info["info"]["yanked_reason"]}</>)'
+                            )
+                    elif self.io.is_verbose():
+                        self.line(f"Checking package: {name} - <fg=green>OK</>")
                 else:
                     self.line_error(
                         f"Error fetching data for {name}=={version}: "

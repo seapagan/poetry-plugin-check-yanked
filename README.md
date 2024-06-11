@@ -53,6 +53,8 @@ yanked along with a list of the yanked dependencies and the reason for the yank.
 
 - `--quiet` - Don't show any output, just return a non-zero exit code if any
   dependencies are yanked.
+- `--verbose` - Show more detailed output, including each dependency and it's
+  yank status.
 
 ## Development setup and Contributing
 
