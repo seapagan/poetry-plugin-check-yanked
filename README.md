@@ -5,14 +5,61 @@ This repository is a template for a basic Python project using
 libraries installed as standard. It also uses
 [pre-commit](https://pre-commit.com/).
 
-- [Development setup](#development-setup)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Available options](#available-options)
+- [Development setup and Contributing](#development-setup-and-contributing)
   - [Task Runner](#task-runner)
   - [Linting](#linting)
   - [Pre-commit](#pre-commit)
 - [License](#license)
 - [Credits](#credits)
 
-## Development setup
+## Installation
+
+The easiest way to install this Poetry plugin is via the `self add` command of
+Poetry.
+
+```bash
+poetry self add poetry-plugin-yanked-check
+```
+
+If you used `pipx` to install Poetry you can add the plugin via the `pipx
+inject` command.
+
+```bash
+pipx inject poetry poetry-plugin-yanked-check
+```
+
+Otherwise, if you used `pip` to install Poetry you can add the plugin packages
+via the `pip install` command.
+
+```bash
+pip install poetry-plugin-yanked-check
+```
+
+## Usage
+
+The plugin adds a new command to Poetry, `yanked-check`, which can be used to
+check if any of the dependencies in the `pyproject.toml` file have been yanked.
+
+```bash
+poetry yanked-check
+```
+
+The command will return a non-zero exit code if any dependencies have been
+yanked along with a list of the yanked dependencies and the reason for the yank.
+
+### Available options
+
+- `--quiet` - Don't show any output, just return a non-zero exit code if any
+  dependencies are yanked.
+
+## Development setup and Contributing
+
+Check [CONTRIBUTING.md](CONTRIBUTING.md) for full instructions on how to set up
+the project for development, and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for
+the project code of conduct.
 
 Install the dependencies using Poetry:
 
@@ -30,7 +77,7 @@ Now, you can start to code the meat of your application.
 
 ### Task Runner
 
-The task-runner [Poe the Poet](https://github.com/nat-n/poethepoet) is installed
+The task-runner [Poe the Poet](https://poethepoet.natn.io/) is installed
 as a development dependency which allows us to run simple tasks (similar to
 `npm` scripts).
 
@@ -49,11 +96,10 @@ section. Take a look at this file if you want to add or remove tasks.
 
 ### Linting
 
-The generated project includes
-[Ruff](https://docs.astral.sh/ruff/){:target="_blank"} for linting and code
-style formatting. [Mypy](http://mypy-lang.org/){:target="_blank"} is installed
-for type checking. These are set quite strictly by default, but you can edit the
-tools configuration in the `pyproject.toml` file.
+The generated project includes [Ruff](https://docs.astral.sh/ruff/) for linting
+and code style formatting. [Mypy](http://mypy-lang.org/) is installed for type
+checking. These are set quite strictly by default, but you can edit the tools
+configuration in the `pyproject.toml` file.
 
 ### Pre-commit
 
