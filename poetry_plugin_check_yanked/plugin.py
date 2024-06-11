@@ -7,15 +7,15 @@ This plugin will check through your 'poetry.lock' and ensure that there are no
 from poetry.console.application import Application
 from poetry.plugins.application_plugin import ApplicationPlugin
 
-from poetry_plugin_yanked_check.command import YankedCheckerCommand
+from poetry_plugin_check_yanked.command import CheckYankedCommand
 
 
-def factory() -> YankedCheckerCommand:
+def factory() -> CheckYankedCommand:
     """Define the factory for the 'check-yanked' command."""
-    return YankedCheckerCommand()
+    return CheckYankedCommand()
 
 
-class YankedCheckerPlugin(ApplicationPlugin):
+class CheckYankedPlugin(ApplicationPlugin):
     """Define the 'yanked-checker' plugin."""
 
     def activate(self, application: Application) -> None:
@@ -24,5 +24,5 @@ class YankedCheckerPlugin(ApplicationPlugin):
 
 
 if __name__ == "__main__":
-    checker = YankedCheckerCommand()
+    checker = CheckYankedCommand()
     checker.handle()

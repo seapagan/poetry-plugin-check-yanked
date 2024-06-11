@@ -6,18 +6,18 @@ import requests
 import rtoml
 from poetry.console.commands.command import Command
 
-from poetry_plugin_yanked_check import status
+from poetry_plugin_check_yanked import status
 
 
-class YankedCheckerCommand(Command):
+class CheckYankedCommand(Command):
     """Define the 'check-yanked' command."""
 
     name = "check-yanked"
     description = "Check for yanked packages in the poetry.lock file"
     help = (
-        "The <c1>check-yanked</> Command checks through the poetry.lock file, "
-        "and reports any packages that have been yanked fom PyPI along with "
-        "the version number and reason."
+        "The <c1>check-yanked</> Command checks through the "
+        "<fg=green>poetry.lock</> file, and reports any packages that have "
+        "been yanked fom PyPI along with the version number and reason."
     )
 
     def handle(self) -> int:

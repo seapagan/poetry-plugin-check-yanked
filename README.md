@@ -21,30 +21,30 @@ The easiest way to install this Poetry plugin is via the `self add` command of
 Poetry.
 
 ```bash
-poetry self add poetry-plugin-yanked-check
+poetry self add poetry-plugin-check-yanked
 ```
 
 If you used `pipx` to install Poetry you can add the plugin via the `pipx
 inject` command.
 
 ```bash
-pipx inject poetry poetry-plugin-yanked-check
+pipx inject poetry poetry-plugin-check-yanked
 ```
 
 Otherwise, if you used `pip` to install Poetry you can add the plugin packages
 via the `pip install` command.
 
 ```bash
-pip install poetry-plugin-yanked-check
+pip install poetry-plugin-check-yanked
 ```
 
 ## Usage
 
-The plugin adds a new command to Poetry, `yanked-check`, which can be used to
+The plugin adds a new command to Poetry, `check-yanked`, which can be used to
 check if any of the dependencies in the `pyproject.toml` file have been yanked.
 
 ```bash
-poetry yanked-check
+poetry check-yanked
 ```
 
 The command will return a non-zero exit code if any dependencies have been

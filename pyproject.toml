@@ -1,21 +1,21 @@
 [tool.poetry]
-name = "poetry-plugin-yanked-check"
+name = "poetry-plugin-check-yanked"
 version = "0.1.0"
-description = "A Poetry plugin to check for yanked packages in the poetry.lock file.."
+description = "A Poetry plugin to check for 'yanked' packages in the poetry.lock file."
 authors = ["Grant Ramsay <seapagan@gmail.com>"]
 readme = "README.md"
 license = "MIT"
 
-packages = [{ include = "poetry_plugin_yanked_check" }]
-repository = "https://github.com/seapagan/poetry-plugin-yanked-check"
+packages = [{ include = "poetry_plugin_check_yanked" }]
+repository = "https://github.com/seapagan/poetry-plugin-check-yanked"
 
 [tool.poetry.urls]
-"Pull Requests" = "https://github.com/seapagan/poetry-plugin-yanked-check/pulls"
-"Bug Tracker" = "https://github.com/seapagan/poetry-plugin-yanked-check/issues"
-"Changelog" = "https://github.com/seapagan/poetry-plugin-yanked-check/blob/main/CHANGELOG.md"
+"Pull Requests" = "https://github.com/seapagan/poetry-plugin-check-yanked/pulls"
+"Bug Tracker" = "https://github.com/seapagan/poetry-plugin-check-yanked/issues"
+"Changelog" = "https://github.com/seapagan/poetry-plugin-check-yanked/blob/main/CHANGELOG.md"
 
 [tool.poetry.plugins."poetry.application.plugin"]
-checker = "poetry_plugin_yanked_check.plugin:YankedCheckerPlugin"
+checker = "poetry_plugin_check_yanked.plugin:CheckYankedPlugin"
 
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0"
@@ -69,13 +69,13 @@ types-requests = "^2.32.0.20240602"
 [tool.poe.tasks]
 pre.cmd = "pre-commit run --all-files"
 pre.help = "Run pre-commit checks"
-mypy.cmd = "mypy poetry_plugin_yanked_check/**/*.py tests/**/*.py --strict"
+mypy.cmd = "mypy poetry_plugin_check_yanked/**/*.py tests/**/*.py --strict"
 mypy.help = "Run mypy checks"
 format.cmd = "ruff format ."
 format.help = "Format code with Ruff"
 ruff.cmd = "ruff check ."
 ruff.help = "Run Ruff checks"
-markdown.cmd = "pymarkdown scan  -r poetry_plugin_yanked_check/**/[!CHANGELOG,!.github/]*.md docs/**/*.md"
+markdown.cmd = "pymarkdown scan  -r poetry_plugin_check_yanked/**/[!CHANGELOG,!.github/]*.md docs/**/*.md"
 markdown.help = "Run markdown checks"
 
 # run all linting checks in sequence. we want to run them all, even if one fails
@@ -121,7 +121,7 @@ lint.extend-ignore = [
   "ISC001",
 ] # these are ignored for ruff formatting
 
-src = ["poetry_plugin_yanked_check"]
+src = ["poetry_plugin_check_yanked"]
 target-version = "py39"              # minimum python version supported
 
 [tool.ruff.format]

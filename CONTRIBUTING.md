@@ -1,10 +1,10 @@
 # Contributing to this Project
 
-Thank you for your interest in contributing to `poetry-plugin-yanked-check`! We
+Thank you for your interest in contributing to `poetry-plugin-check-yanked`! We
 welcome all contributions, big or small.
 
 If you are not sure where to start, please take a look at the [open
-issues](https://github.com/seapagan/poetry-plugin-yanked-check/issues). If you
+issues](https://github.com/seapagan/poetry-plugin-check-yanked/issues). If you
 have an idea for a new feature or would like to report a bug, please open a new
 issue. You can also check the **TODO List** for ideas.
 
@@ -41,9 +41,9 @@ website](https://python-poetry.org/docs/#installation).
 
 Before you start contributing, please make sure you have read and understood our
 [Code of
-Conduct](https://github.com/seapagan/poetry-plugin-yanked-check/blob/main/CODE_OF_CONDUCT.md)
+Conduct](https://github.com/seapagan/poetry-plugin-check-yanked/blob/main/CODE_OF_CONDUCT.md)
 and
-[License](https://github.com/seapagan/poetry-plugin-yanked-check/blob/main/LICENSE.txt).
+[License](https://github.com/seapagan/poetry-plugin-check-yanked/blob/main/LICENSE.txt).
 
 To get started, follow these steps:
 
@@ -249,7 +249,7 @@ Here are some guidelines to follow when contributing to `github-changelog-md`:
 - If you add or change any functionality, please update the documentation
   accordingly.
 - Use [GitHub
-  issues](https://github.com/seapagan/poetry-plugin-yanked-check/issues) to
+  issues](https://github.com/seapagan/poetry-plugin-check-yanked/issues) to
   report bugs or suggest new features.
 
 If you are using VSCode, there is a config file in the `.vscode` folder that
@@ -262,7 +262,7 @@ here soon. The `Python`, `MyPy` and  `Ruff` ones are very helpful (the included
 
 If you have any questions or need help with contributing, please contact me
 **@seapagan** on GitHub. You can also use the [GitHub
-Discussions](https://github.com/seapagan/poetry-plugin-yanked-check/discussions)
+Discussions](https://github.com/seapagan/poetry-plugin-check-yanked/discussions)
 feature.
 
 Happy contributing!
