@@ -35,7 +35,7 @@ checker = "poetry_plugin_check_yanked.plugin:CheckYankedPlugin"
 
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0"
-poetry = ">=1.8.3"
+poetry = ">=1.6.0"
 rtoml = ">=0.10.0"
 requests = ">=2.32.3"
 
