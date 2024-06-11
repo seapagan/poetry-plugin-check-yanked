@@ -21,7 +21,7 @@ checker = "poetry_plugin_yanked_check.main:YankedCheckerPlugin"
 python = ">=3.9,<4.0"
 poetry = ">=1.8.3"
 rtoml = ">=0.10.0"
-requests = "2.32.0"
+requests = ">=2.32.3"
 
 [build-system]
 requires = ["poetry-core"]
