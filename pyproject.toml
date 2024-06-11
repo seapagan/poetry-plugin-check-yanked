@@ -15,7 +15,7 @@ repository = "https://github.com/seapagan/poetry-plugin-yanked-check"
 "Changelog" = "https://github.com/seapagan/poetry-plugin-yanked-check/blob/main/CHANGELOG.md"
 
 [tool.poetry.plugins."poetry.application.plugin"]
-checker = "poetry_plugin_yanked_check.main:YankedCheckerPlugin"
+checker = "poetry_plugin_yanked_check.plugin:YankedCheckerPlugin"
 
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0"
