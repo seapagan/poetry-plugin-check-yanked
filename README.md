@@ -1,9 +1,8 @@
-# Poetry Plugin Yanked Check <!-- omit in toc -->
+# Poetry Plugin : Check for Yanked Packages <!-- omit in toc -->
 
-This repository is a template for a basic Python project using
-[Poetry](https://python-poetry.org/), with assorted Linting and Testing
-libraries installed as standard. It also uses
-[pre-commit](https://pre-commit.com/).
+This is a plugin for the [Poetry](https://python-poetry.org/) dependency
+management tool that adds a new command to check if any of the dependencies in
+the `pyproject.toml` file have been yanked.
 
 - [Installation](#installation)
 - [Usage](#usage)
