@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "poetry-plugin-check-yanked"
-version = "0.1.0"
+version = "0.1.1"
 description = "A Poetry plugin to check for 'yanked' packages in the poetry.lock file."
 authors = ["Grant Ramsay <seapagan@gmail.com>"]
 readme = "README.md"
