@@ -127,13 +127,7 @@ class CheckYankedCommand(Command):
                 timeout=self.timeout_seconds,
             )
 
-            last_checked = str(
-                int(
-                    datetime.datetime.now(tz=datetime.timezone.utc)
-                    .replace(microsecond=0)
-                    .timestamp()
-                )
-            )
+            last_checked = self.get_timestamp()
 
             if response.status_code == status.HTTP_200_OK:
                 package_info = response.json()
@@ -166,3 +160,16 @@ class CheckYankedCommand(Command):
             "yanked_reason": None,
             "last_checked": last_checked,
         }
+
+    def get_timestamp(self) -> str:
+        """Return the current timestamp as a string.
+
+        Removes any decimal places and microseconds.
+        """
+        return str(
+            int(
+                datetime.datetime.now(tz=datetime.timezone.utc)
+                .replace(microsecond=0)
+                .timestamp()
+            )
+        )
