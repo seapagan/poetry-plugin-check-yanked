@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import datetime
 from pathlib import Path
 from typing import Any
 
@@ -126,6 +127,14 @@ class CheckYankedCommand(Command):
                 timeout=self.timeout_seconds,
             )
 
+            last_checked = str(
+                int(
+                    datetime.datetime.now(tz=datetime.timezone.utc)
+                    .replace(microsecond=0)
+                    .timestamp()
+                )
+            )
+
             if response.status_code == status.HTTP_200_OK:
                 package_info = response.json()
                 yanked = package_info["info"].get("yanked", False)
@@ -136,6 +145,7 @@ class CheckYankedCommand(Command):
                         "yanked_reason": package_info["info"].get(
                             "yanked_reason"
                         ),
+                        "last_checked": last_checked,
                     }
 
             else:
@@ -151,4 +161,8 @@ class CheckYankedCommand(Command):
         except requests.RequestException as e:
             self.line_error(f"Request for {name}=={version} failed: {e}")
 
-        return {"yanked": False, "yanked_reason": None}
+        return {
+            "yanked": False,
+            "yanked_reason": None,
+            "last_checked": last_checked,
+        }
