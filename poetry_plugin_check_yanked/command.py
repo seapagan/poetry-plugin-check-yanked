@@ -59,7 +59,7 @@ class CheckYankedCommand(Command):
 
     def get_yanked_packages(
         self, lockfile_path: Path
-    ) -> list[tuple[str, str, dict[str, str | bool | None]]]:
+    ) -> list[tuple[str, str, dict[str, Any]]]:
         """Return a list of the yanked packages in the lockfile.
 
         Returns a list of tuples, where each tuple contains the name, version
@@ -90,7 +90,7 @@ class CheckYankedCommand(Command):
 
     def check_package(
         self, package: dict[str, Any]
-    ) -> tuple[str, dict[str, str | bool | None]]:
+    ) -> tuple[str, dict[str, Any]]:
         """Check the specified package for yanked status.
 
         If it exists in the cache, return the cached value. Otherwise, fetch
@@ -114,9 +114,7 @@ class CheckYankedCommand(Command):
 
         return (package_version, new_package)
 
-    def request_package(
-        self, name: str, version: str
-    ) -> dict[str, str | bool | None]:
+    def request_package(self, name: str, version: str) -> dict[str, Any]:
         """Request the package info from PyPI.
 
         Return the yanked status and reason, if available.
@@ -161,15 +159,13 @@ class CheckYankedCommand(Command):
             "last_checked": last_checked,
         }
 
-    def get_timestamp(self) -> str:
+    def get_timestamp(self) -> int:
         """Return the current timestamp as a string.
 
         Removes any decimal places and microseconds.
         """
-        return str(
-            int(
-                datetime.datetime.now(tz=datetime.timezone.utc)
-                .replace(microsecond=0)
-                .timestamp()
-            )
+        return int(
+            datetime.datetime.now(tz=datetime.timezone.utc)
+            .replace(microsecond=0)
+            .timestamp()
         )
