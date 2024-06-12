@@ -49,7 +49,7 @@ class CheckYankedCommand(Command):
             for name, version, status in yanked_packages:
                 self.line_error(
                     f'-> "<fg=red>{name}</>" version {version} '
-                    f"(<fg=yellow>{status["yanked_reason"]}</>)"
+                    f'(<fg=yellow>{status["yanked_reason"]}</>)'
                 )
             return 1
 
@@ -78,12 +78,12 @@ class CheckYankedCommand(Command):
                 self.yanked_packages.append((package["name"], version, status))
                 if self.io.is_verbose():
                     self.line(
-                        f"Checking {package["name"]} - "
+                        f'Checking {package["name"]} - '
                         "<fg=red>Yanked</> (<fg=yellow>"
                         f'{status["yanked_reason"]}</>)'
                     )
             elif self.io.is_verbose():
-                self.line(f"Checking {package["name"]} - <fg=green>OK</>")
+                self.line(f'Checking {package["name"]} - <fg=green>OK</>')
 
         return self.yanked_packages
 
