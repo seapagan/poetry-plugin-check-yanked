@@ -4,15 +4,19 @@ from __future__ import annotations
 
 import datetime
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any, ClassVar
 
 import pickledb
 import platformdirs
 import requests
 import rtoml
+from cleo.helpers import option
 from poetry.console.commands.command import Command
 
 from poetry_plugin_check_yanked import status
+
+if TYPE_CHECKING:
+    from cleo.io.inputs.option import Option
 
 
 class CheckYankedCommand(Command):
@@ -25,6 +29,9 @@ class CheckYankedCommand(Command):
         "<fg=green>poetry.lock</> file, and reports any packages that have "
         "been yanked fom PyPI along with the version number and reason."
     )
+    options: ClassVar[list[Option]] = [
+        option("full", "-f", "Re-check cached libraries with PyPI", flag=True),
+    ]
 
     def __init__(self) -> None:
         """Initialize the command."""
@@ -104,7 +111,7 @@ class CheckYankedCommand(Command):
         else:
             library_info = {}
 
-        if package_version in library_info:
+        if package_version in library_info and not self.option("full"):
             return (package_version, library_info[package_version])
 
         new_package = self.request_package(package_name, package_version)
