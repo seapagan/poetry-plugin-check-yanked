@@ -86,6 +86,7 @@ class CheckYankedCommand(Command):
 
         if use_progress:
             progress = self.progress_bar(len(lock_data["package"]))
+            progress.set_format(" [ %bar% ] %percent:3s%%")
 
         for package in lock_data["package"]:
             version, status = self.check_package(package)
