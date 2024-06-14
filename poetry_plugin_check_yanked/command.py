@@ -19,6 +19,9 @@ if TYPE_CHECKING:
     from cleo.io.inputs.option import Option
 
 
+ONE_DAY = 86400
+
+
 class CheckYankedCommand(Command):
     """Define the 'check-yanked' command."""
 
@@ -80,9 +83,7 @@ class CheckYankedCommand(Command):
             "packages in poetry.lock"
         )
 
-        use_progress = (
-            self.option("full") or self.option("refresh")
-        ) and not self.io.is_verbose()
+        use_progress = not self.io.is_verbose()
 
         if use_progress:
             progress = self.progress_bar(len(lock_data["package"]))
@@ -109,6 +110,18 @@ class CheckYankedCommand(Command):
 
         return self.yanked_packages
 
+    def cache_ok(self, name: str, version: str) -> bool:
+        """Returns True if the cache value has not expired, False otherwise.
+
+        Will also return False if the cached version does not exist.
+        """
+        if self.cache.exists(name):
+            package_info = self.cache.get(name)
+            if version in package_info:
+                last_checked = package_info[version]["last_checked"]
+                return self.get_timestamp() - last_checked < ONE_DAY
+        return False
+
     def check_package(
         self, package: dict[str, Any]
     ) -> tuple[str, dict[str, Any]]:
@@ -120,7 +133,7 @@ class CheckYankedCommand(Command):
         package_name: str = package["name"]
         package_version: str = package["version"]
 
-        if self.cache.exists(package_name):
+        if self.cache_ok(package_name, package_version):
             library_info = self.cache.get(package_name)
         else:
             library_info = {}
