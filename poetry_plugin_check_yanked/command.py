@@ -68,7 +68,7 @@ class CheckYankedCommand(Command):
 
         self.config: dict[str, Any] = self.poetry.pyproject.data.get(
             "tool", {}
-        ).get("check_yanked", {})
+        ).get("check-yanked", {})
 
         self.cache_expiry: int = self.config.get("cache_expiry", ONE_DAY)
 
