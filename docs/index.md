@@ -1,17 +1,32 @@
-# Welcome to MkDocs
+# Check for yanked packages in your Poetry project
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+This is a simple plugin for the [Poetry](https://python-poetry.org/) dependency
+management tool.
 
-## Commands
+This plugin adds a new command to Poetry, `check-yanked`, which can be used to
+check if any of the dependencies in the project lock file `poetry.lock` have
+been yanked from PyPI by their maintainers. There is usually a pretty good
+reason for a package to be yanked, so it's a good idea to check for yanked
+packages in your project.
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+It will download the latest metadata for each package in the `poetry.lock` file
+and cache it for a period of time (default 1 day) to minimize the number of
+requests to PyPI (and speed up future runs).
 
-## Project layout
+!!! note
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+    Since this plugin uses the `poetry.lock` file to determine the exact
+    versions of the dependencies to check, it will also check for any yanked
+    dependencies of your project dependencies specified in the `pyproject.toml`
+    file.
+
+This plugin could be added to a pre-commit hook to check for yanked packages
+before running any other checks or tests.
+
+It should ideally be run using the `-full` option before releasing a new version
+of a project to ensure that all dependencies are up-to-date and not yanked, or
+in a GitHub Action or similar CI/CD pipeline.
+
+This plugin was written to learn how to write a Poetry plugin and to scratch an
+itch I had for a tool like this. I have more [ideas](todo.md) for features and
+improvements, and I welcome any [contributions](contributing.md) or suggestions.
