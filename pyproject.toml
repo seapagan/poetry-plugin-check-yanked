@@ -37,7 +37,10 @@ checker = "poetry_plugin_check_yanked.plugin:CheckYankedPlugin"
 python = ">=3.9,<4.0"
 poetry = ">=1.6.0"
 rtoml = ">=0.10.0"
-requests = ">=2.32.3"
+requests = "^2.32.3"
+pickledb = "^0.9.2"
+platformdirs = "^4.2.2"
+
 
 [build-system]
 requires = ["poetry-core"]
@@ -118,6 +121,9 @@ changelog.cmd = "github-changelog-md"
 changelog.help = "Generate a CHANGELOG.md file"
 
 # configure assorted tools and linters
+[tool.check-yanked]
+# cache_expiry = 86400
+
 [tool.pymarkdown]
 plugins.md014.enabled = false
 plugins.md046.enabled = false
@@ -162,9 +168,16 @@ known-first-party = []
 [tool.ruff.lint.pyupgrade]
 keep-runtime-typing = true
 
+[tool.mypy]
+python_version = "3.9"
+
 [[tool.mypy.overrides]]
 disable_error_code = ["method-assign", "no-untyped-def", "attr-defined"]
 module = "tests.*"
+
+[[tool.mypy.overrides]]
+module = "pickledb.*"
+ignore_missing_imports = true
 
 # Options for pytest and coverage
 [tool.pytest.ini_options]
