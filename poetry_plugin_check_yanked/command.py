@@ -148,12 +148,15 @@ class CheckYankedCommand(Command):
         package_name: str = package["name"]
         package_version: str = package["version"]
 
-        if self.cache_ok(package_name, package_version):
-            library_info = self.cache.get(package_name)
-        else:
+        library_info = self.cache.get(package_name)
+        if not library_info:
             library_info = {}
 
-        if package_version in library_info and not self.option("full"):
+        if (
+            package_version in library_info
+            and not self.option("full")
+            and self.cache_ok(package_name, package_version)
+        ):
             return (package_version, library_info[package_version])
 
         new_package = self.request_package(package_name, package_version)
