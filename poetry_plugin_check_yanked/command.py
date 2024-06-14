@@ -134,7 +134,7 @@ class CheckYankedCommand(Command):
             package_info = self.cache.get(name)
             if version in package_info:
                 last_checked = package_info[version]["last_checked"]
-                return self.get_timestamp() - last_checked < ONE_DAY
+                return bool(self.get_timestamp() - last_checked < ONE_DAY)
         return False
 
     def check_package(
