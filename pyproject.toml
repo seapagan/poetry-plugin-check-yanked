@@ -121,6 +121,9 @@ changelog.cmd = "github-changelog-md"
 changelog.help = "Generate a CHANGELOG.md file"
 
 # configure assorted tools and linters
+[tool.check_yanked]
+# cache_expiry = 86400
+
 [tool.pymarkdown]
 plugins.md014.enabled = false
 plugins.md046.enabled = false

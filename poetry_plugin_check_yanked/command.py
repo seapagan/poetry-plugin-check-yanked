@@ -28,9 +28,9 @@ class CheckYankedCommand(Command):
     name = "check-yanked"
     description = (
         "Check for yanked packages in the <fg=green>poetry.lock</fg=green> "
-        "file.\n\n  Results are cached for 24 hours to avoid unnecessary "
-        "requests to PyPI, though this can be overridden with the "
-        "<fg=green>--full</fg=green> option."
+        "file.\n\n  Results are cached for 24 hours by default to avoid "
+        "unnecessary requests to PyPI, though this can be changed in the "
+        "<fg=green>pyproject.toml</> file."
     )
     help = (
         "The <c1>check-yanked</> Command checks through the "
@@ -65,6 +65,12 @@ class CheckYankedCommand(Command):
     def handle(self) -> int:
         """Handle the command."""
         lockfile_path = Path("poetry.lock")
+
+        self.config: dict[str, Any] = self.poetry.pyproject.data.get(
+            "tool", {}
+        ).get("check_yanked", {})
+
+        self.cache_expiry: int = self.config.get("cache_expiry", ONE_DAY)
 
         # Check if we are refreshing the cache
         if self.option("refresh"):
@@ -137,7 +143,9 @@ class CheckYankedCommand(Command):
             package_info = self.cache.get(name)
             if version in package_info:
                 last_checked = package_info[version]["last_checked"]
-                return bool(self.get_timestamp() - last_checked < ONE_DAY)
+                return bool(
+                    self.get_timestamp() - last_checked < self.cache_expiry
+                )
         return False
 
     def check_package(
