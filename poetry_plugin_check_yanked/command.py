@@ -26,14 +26,23 @@ class CheckYankedCommand(Command):
     """Define the 'check-yanked' command."""
 
     name = "check-yanked"
-    description = "Check for yanked packages in the poetry.lock file"
+    description = (
+        "Check for yanked packages in the <fg=green>poetry.lock</fg=green> file"
+    )
     help = (
         "The <c1>check-yanked</> Command checks through the "
         "<fg=green>poetry.lock</> file, and reports any packages that have "
         "been yanked fom PyPI along with the version number and reason."
     )
     options: ClassVar[list[Option]] = [
-        option("full", "-f", "Re-check cached libraries with PyPI", flag=True),
+        option("full", "-f", "Re-check cached libraries from PyPI", flag=True),
+        option(
+            "refresh",
+            "-r",
+            "Update the entire local package cache from PyPI, "
+            "without checking the lockfile",
+            flag=True,
+        ),
     ]
 
     def __init__(self) -> None:
@@ -53,6 +62,12 @@ class CheckYankedCommand(Command):
     def handle(self) -> int:
         """Handle the command."""
         lockfile_path = Path("poetry.lock")
+
+        # Check if we are refreshing the cache
+        if self.option("refresh"):
+            self.refresh_cache()
+            return 0
+
         yanked_packages = self.get_yanked_packages(lockfile_path)
 
         if yanked_packages:
@@ -203,3 +218,22 @@ class CheckYankedCommand(Command):
             .replace(microsecond=0)
             .timestamp()
         )
+
+    def refresh_cache(self) -> None:
+        """Refresh the cache with the latest package info from PyPI.
+
+        This function will update the entire local package cache from PyPI,
+        checking each package in the cache.db file. This is useful if you
+        suspect that the cache is out of date.
+        """
+        progress = self.progress_bar()
+        self.line("<info>Refreshing cache...</info>")
+        for name in self.cache.getall():
+            for version in self.cache.get(name):
+                update = self.request_package(name, version)
+                package_info = self.cache.get(name)
+                package_info[version] = update
+                progress.advance()
+        self.cache.dump()
+        progress.finish()
+        self.line("<info>Cache refreshed</info>")
