@@ -6,30 +6,17 @@ project since the first release, with the latest changes at the top.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/seapagan/poetry-plugin-check-yanked/tree/HEAD)
-
-
-These are the changes that have been merged to the repository since the last
-release. If you want to try out these changes, you can install the latest
-version from the main branch by running:
-
-```console
-$ pip install git+https://github.com/seapagan/github-changelog-md
-```
-
-or, if using poetry:
-
-```console
-$ poetry add git+https://github.com/seapagan/github-changelog-md
-```
-Everything in this section will be included in the next official release.
-
+## [v0.2.0](https://github.com/seapagan/poetry-plugin-check-yanked/releases/tag/v0.2.0) (June 14, 2024)
 
 **New Features**
 
 - Implement caching to store the yanked status of already checked libraries. ([#6](https://github.com/seapagan/poetry-plugin-check-yanked/pull/6)) by [seapagan](https://github.com/seapagan)
 
-[`Full Changelog`](https://github.com/seapagan/poetry-plugin-check-yanked/compare/v0.1.1...HEAD) | [`Diff`](https://github.com/seapagan/poetry-plugin-check-yanked/compare/v0.1.1...HEAD.diff) | [`Patch`](https://github.com/seapagan/poetry-plugin-check-yanked/compare/v0.1.1...HEAD.patch)
+**Documentation**
+
+- Add a basic documentation site ([#7](https://github.com/seapagan/poetry-plugin-check-yanked/pull/7)) by [seapagan](https://github.com/seapagan)
+
+[`Full Changelog`](https://github.com/seapagan/poetry-plugin-check-yanked/compare/v0.1.1...v0.2.0) | [`Diff`](https://github.com/seapagan/poetry-plugin-check-yanked/compare/v0.1.1...v0.2.0.diff) | [`Patch`](https://github.com/seapagan/poetry-plugin-check-yanked/compare/v0.1.1...v0.2.0.patch)
 
 ## [v0.1.1](https://github.com/seapagan/poetry-plugin-check-yanked/releases/tag/v0.1.1) (June 11, 2024)
 
