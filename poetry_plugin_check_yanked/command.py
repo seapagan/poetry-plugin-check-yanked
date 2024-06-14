@@ -80,6 +80,13 @@ class CheckYankedCommand(Command):
             "packages in poetry.lock"
         )
 
+        use_progress = (
+            self.option("full") or self.option("refresh")
+        ) and not self.io.is_verbose()
+
+        if use_progress:
+            progress = self.progress_bar(len(lock_data["package"]))
+
         for package in lock_data["package"]:
             version, status = self.check_package(package)
             if status["yanked"]:
@@ -92,6 +99,12 @@ class CheckYankedCommand(Command):
                     )
             elif self.io.is_verbose():
                 self.line(f'Checking {package["name"]} - <fg=green>OK</>')
+
+            if use_progress:
+                progress.advance()
+
+        if use_progress:
+            progress.finish()
 
         return self.yanked_packages
 
