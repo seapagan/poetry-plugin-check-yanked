@@ -4,14 +4,15 @@ This is a plugin for the [Poetry](https://python-poetry.org/) dependency
 management tool that adds a new command to check if any of the dependencies in
 the `pyproject.toml` file have been yanked.
 
+This plugin was written to learn how to write a Poetry plugin and to scratch an
+itch I had for a tool like this. I have more [ideas](TODO.md) for features and
+improvements, and I welcome any [contributions](CONTRIBUTING.md) or suggestions.
+
 - [Installation](#installation)
 - [Usage](#usage)
   - [Available options](#available-options)
   - [Configuration](#configuration)
 - [Development setup and Contributing](#development-setup-and-contributing)
-  - [Task Runner](#task-runner)
-  - [Linting](#linting)
-  - [Pre-commit](#pre-commit)
 - [License](#license)
 - [Credits](#credits)
 
@@ -95,59 +96,6 @@ cache_expiry = 3600 # 1 hour
 Check [CONTRIBUTING.md](CONTRIBUTING.md) for full instructions on how to set up
 the project for development, and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for
 the project code of conduct.
-
-Install the dependencies using Poetry:
-
-```console
-$ poetry install
-```
-
-Then, activate the virtual environment:
-
-```console
-$ poetry shell
-```
-
-Now, you can start to code on this application.
-
-### Task Runner
-
-The task-runner [Poe the Poet](https://poethepoet.natn.io/) is installed
-as a development dependency which allows us to run simple tasks (similar to
-`npm` scripts).
-
-These are run (from within the virtual environment) using the `poe` command and
-then the script name, for example:
-
-```console
-$ poe pre
-```
-
-See the [Task Runner](https://py-maker.seapagan.net/tasks/) section in the
-documentation for more details and a list of available tasks.
-
-These are defined in the `pyproject.toml` file in the `[tool.poe.tasks]`
-section. Take a look at this file if you want to add or remove tasks.
-
-### Linting
-
-The generated project includes [Ruff](https://docs.astral.sh/ruff/) for linting
-and code style formatting. [Mypy](http://mypy-lang.org/) is installed for type
-checking. These are set quite strictly by default, but you can edit the tools
-configuration in the `pyproject.toml` file.
-
-### Pre-commit
-
-There is a [pre-commit](https://pre-commit.com/) configuration provided to run
-some checks on the code before it is committed.  This is a great tool to help
-keep your code clean.
-
-To install pre-commit, run the following command from inside your venv:
-
-```console
-$ pre-commit install
-pre-commit installed at .git/hooks/pre-commit
-```
 
 ## License
 

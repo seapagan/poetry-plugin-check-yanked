@@ -125,7 +125,10 @@ changelog.help = "Generate a CHANGELOG.md file"
 # cache_expiry = 86400
 
 [tool.pymarkdown]
+plugins.md013.enabled = false
 plugins.md014.enabled = false
+plugins.md040.enabled = false
+plugins.md041.enabled = false
 plugins.md046.enabled = false
 
 [tool.ruff]
