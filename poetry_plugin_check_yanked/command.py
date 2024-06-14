@@ -27,7 +27,10 @@ class CheckYankedCommand(Command):
 
     name = "check-yanked"
     description = (
-        "Check for yanked packages in the <fg=green>poetry.lock</fg=green> file"
+        "Check for yanked packages in the <fg=green>poetry.lock</fg=green> "
+        "file.\n\n  Results are cached for 24 hours to avoid unnecessary "
+        "requests to PyPI, though this can be overridden with the "
+        "<fg=green>--full</fg=green> option."
     )
     help = (
         "The <c1>check-yanked</> Command checks through the "
