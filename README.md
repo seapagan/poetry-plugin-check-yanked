@@ -7,6 +7,7 @@ the `pyproject.toml` file have been yanked.
 - [Installation](#installation)
 - [Usage](#usage)
   - [Available options](#available-options)
+  - [Configuration](#configuration)
 - [Development setup and Contributing](#development-setup-and-contributing)
   - [Task Runner](#task-runner)
   - [Linting](#linting)
@@ -45,6 +46,18 @@ from PyPI by their maintainers. There is usually a pretty good reason for a
 package to be yanked, so it's a good idea to check for yanked packages in your
 project.
 
+When you check for yanked packages, the plugin will download the latest
+metadata for each package in the `poetry.lock` file and check if any of them are
+yanked. If any are found, the command will return a non-zero exit code and list
+the yanked packages along with the reason for the yank. Once a specific package
+verison has been checked, it will be cached for a period of time (default 1 day)
+to minimize the number of requests to PyPI (and speed up future runs).
+
+> [!NOTE]
+> This plugin uses the `poetry.lock` file to determine the exact versions of
+> the dependencies to check, so it will also check for any yanked dependencies
+> of the dependencies you have specified in the `pyproject.toml` file.
+
 ```bash
 poetry check-yanked
 ```
@@ -54,10 +67,28 @@ yanked along with a list of the yanked dependencies and the reason for the yank.
 
 ### Available options
 
+- `--full` - Check each project dependency package again, even if it is already
+  in the cache.
+- `--refresh` - Refesh the entire cache and exit, no not check for yanked
+  packages.
 - `--quiet` - Don't show any output, just return a non-zero exit code if any
   dependencies are yanked.
 - `--verbose` - Show more detailed output, including each dependency and it's
   yank status.
+
+### Configuration
+
+At this time, the only configuration option is the cache timeout, which is set
+to 1 day by default. This can be changed by adding a `[tool.check-yanked]`
+section to the `pyproject.toml` file with a `cache_expiry` key. This value is
+in seconds. and the default is 86400 (1 day). Future versions of the plugin will
+offer pre-defined cache times (e.g. 1 hour, 1 day, 1 week, etc.) as well as the
+ability to disable the cache entirely.
+
+```toml
+[tool.check-yanked]
+cache_expiry = 3600 # 1 hour
+```
 
 ## Development setup and Contributing
 
@@ -77,7 +108,7 @@ Then, activate the virtual environment:
 $ poetry shell
 ```
 
-Now, you can start to code the meat of your application.
+Now, you can start to code on this application.
 
 ### Task Runner
 
