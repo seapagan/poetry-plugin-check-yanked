@@ -4,7 +4,9 @@
   files for it will be slow on large projects
 - Offer to update any yanked packages to the latest version, or show a list of
   newer versions
-- add options to clear the cache, re-check all project deps, ignore the cache
-  etc
-- automatically re-check older cache entries after a certain amount of time
-  (say, 1 day or 1 week).
+- add option to clear the cache, either all of it or just for a specific package
+- list all yanked packages in the cache
+- flag to always use the cache, even if it has expired
+- add defined expiry peroiods for the config file = "1h","1d", "1w", "1m", etc.
+  Make the prefix apply to the period as well so you can have "1h", "2h",
+  "3h",etc
