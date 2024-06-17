@@ -28,14 +28,15 @@ class CheckYankedCommand(Command):
     name = "check-yanked"
     description = (
         "Check for yanked packages in the <fg=green>poetry.lock</fg=green> "
-        "file.\n\n  Results are cached for 24 hours by default to avoid "
-        "unnecessary requests to PyPI, though this can be changed in the "
-        "<fg=green>pyproject.toml</> file."
+        "file."
     )
     help = (
         "The <c1>check-yanked</> Command checks through the "
         "<fg=green>poetry.lock</> file, and reports any packages that have "
         "been yanked fom PyPI along with the version number and reason."
+        "Results are cached for 24 hours by default to avoid "
+        "unnecessary requests to PyPI, though this can be changed in the "
+        "<fg=green>pyproject.toml</> file."
     )
     options: ClassVar[list[Option]] = [
         option("full", "-f", "Re-check cached libraries from PyPI", flag=True),
