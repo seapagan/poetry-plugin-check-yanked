@@ -1,6 +1,7 @@
 # GitHub Action
 
-There is now also a GitHub Action for this plugin that can be run for all pull-requests to ensure that all dependencies are up-to-date and not yanked.
+There is now also a GitHub Action for this plugin that can be run for all
+pull-requests to ensure that all dependencies are up-to-date and not yanked.
 
 See the repository for the
 [check-yanked-packages](https://github.com/seapagan/check-yanked-packages){:target="_blank"}
