@@ -73,10 +73,12 @@ yanked along with a list of the yanked dependencies and the reason for the yank.
   in the cache.
 - `--refresh` - Refesh the entire cache and exit, no not check for yanked
   packages.
+- `--no-progress` - Don't show the progress bar when checking for yanked
+  packages, useful for CI/CD environments.
 - `--quiet` - Don't show any output, just return a non-zero exit code if any
   dependencies are yanked.
 - `--verbose` - Show more detailed output, including each dependency and it's
-  yank status.
+  yank status. This disables the progress bar.
 
 ### Configuration
 
