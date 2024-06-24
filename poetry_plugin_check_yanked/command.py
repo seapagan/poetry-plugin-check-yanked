@@ -84,10 +84,10 @@ class CheckYankedCommand(Command):
 
         if yanked_packages:
             self.line("\n<fg=red>Yanked packages found:</>\n")
-            for name, version, status in yanked_packages:
+            for name, version, package_status in yanked_packages:
                 self.line_error(
                     f'-> "<fg=red>{name}</>" version {version} '
-                    f'(<fg=yellow>{status["yanked_reason"]}</>)'
+                    f'(<fg=yellow>{package_status["yanked_reason"]}</>)'
                 )
             return 1
 
