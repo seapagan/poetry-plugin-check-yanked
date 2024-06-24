@@ -8,4 +8,4 @@ jobs:
 
     steps:
       - name: Run poetry check-yanked
-        uses: seapagan/poetry-plugin-check-yanked@add-github-action
+        uses: seapagan/poetry-plugin-check-yanked@v1
