@@ -1,0 +1,17 @@
+name: Check for Yanked Packages
+
+on: [push, pull_request]
+
+jobs:
+  check-yanked:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run poetry check-yanked
+        uses: seapagan/poetry-plugin-check-yanked@add-github-action
+        with:
+          path: "./"
+          python-version: "3.11" # This line is optional and can be omitted if you want to use the default version
