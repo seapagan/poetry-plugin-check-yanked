@@ -47,6 +47,7 @@ class CheckYankedCommand(Command):
             "without checking the lockfile",
             flag=True,
         ),
+        option("no-progress", None, "Do not display a progress bar", flag=True),
     ]
 
     def __init__(self) -> None:
@@ -108,7 +109,9 @@ class CheckYankedCommand(Command):
             "packages in poetry.lock"
         )
 
-        use_progress = not self.io.is_verbose()
+        use_progress = not self.io.is_verbose() and not self.option(
+            "no-progress"
+        )
 
         if use_progress:
             progress = self.progress_bar(len(lock_data["package"]))
