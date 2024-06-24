@@ -1,5 +1,8 @@
 # Poetry Plugin : Check for Yanked Packages <!-- omit in toc -->
 
+[![PyPI version](https://badge.fury.io/py/poetry-plugin-check-yanked.svg)](https://badge.fury.io/py/poetry-plugin-check-yanked)
+![PyPI - License](https://img.shields.io/pypi/l/poetry-plugin-check-yanked)
+
 This is a plugin for the [Poetry](https://python-poetry.org/) dependency
 management tool that adds a new command to check if any of the dependencies in
 the `pyproject.toml` file have been yanked.
