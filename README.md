@@ -2,6 +2,7 @@
 
 [![PyPI version](https://badge.fury.io/py/poetry-plugin-check-yanked.svg)](https://badge.fury.io/py/poetry-plugin-check-yanked)
 ![PyPI - License](https://img.shields.io/pypi/l/poetry-plugin-check-yanked)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/a2d631f85efd43028733ff638d9c69ea)](https://app.codacy.com/gh/seapagan/poetry-plugin-check-yanked/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
 This is a plugin for the [Poetry](https://python-poetry.org/) dependency
 management tool that adds a new command to check if any of the dependencies in
