@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import datetime
+import sys
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, ClassVar
 
@@ -101,8 +102,19 @@ class CheckYankedCommand(Command):
         Returns a list of tuples, where each tuple contains the name, version
         and reason. If no yanked packages are found, an empty list is returned.
         """
-        with lockfile_path.open() as file:
-            lock_data = rtoml.load(file)
+        try:
+            with lockfile_path.open() as file:
+                lock_data = rtoml.load(file)
+        except FileNotFoundError:
+            self.line_error(
+                "<fg=red>\npoetry.lock file not found. "
+                "If you have not already run 'poetry install' please do so "
+                "before running this command.</>\n"
+                "\nIf you <b>have</b> run 'poetry install' and still see this "
+                "error, please check that the file exists in the current "
+                "directory.\n"
+            )
+            sys.exit(2)
 
         self.info(
             f"\nChecking <fg=green>{len(lock_data['package'])}</> "
