@@ -56,6 +56,7 @@ nav:
   - Introduction: index.md
   - Installation: installation.md
   - Usage: usage.md
+  - GitHub Action: github-action.md
   - To Do: todo.md
   - Contributing: contributing.md
   - Changelog: changelog.md
