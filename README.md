@@ -12,6 +12,7 @@ improvements, and I welcome any [contributions](CONTRIBUTING.md) or suggestions.
 - [Usage](#usage)
   - [Available options](#available-options)
   - [Configuration](#configuration)
+- [Use as a GitHub Action](#use-as-a-github-action)
 - [Development setup and Contributing](#development-setup-and-contributing)
 - [License](#license)
 - [Credits](#credits)
@@ -90,6 +91,50 @@ ability to disable the cache entirely.
 [tool.check-yanked]
 cache_expiry = 3600 # 1 hour
 ```
+
+## Use as a GitHub Action
+
+This plugin can be used as a GitHub Action to check for yanked packages
+automatically as part of your CI. Here is an example workflow:
+
+```yaml
+name: Check for Yanked Packages
+
+on: [push, pull_request]
+
+jobs:
+  check-yanked:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run poetry check-yanked
+        uses: seapagan/check-yanked-packages@v1
+```
+
+There are two optional inputs that can be used to configure the action:
+
+- `path` - The path to the directory containing the `poetry.lock` file. This
+  defaults to the root of the repository.
+- `python-version` - The version of Python to use when running the action. This
+  defaults to the latest version of Python 3.x available on the runner.
+  - If you are using the `actions/setup-python` action, this will be **ignored**,
+  and the version of Python installed by that will be used instead.
+
+These can be set in the workflow file like so:
+
+```yaml
+- name: Run poetry check-yanked
+  uses: seapagan/check-yanked-packages@v1
+  with:
+    python-version: '3.10'
+    path: 'path/to/directory'
+```
+
+See the
+[check-yanked-packages](https://github.com/seapagan/check-yanked-packages)
+action for more information on using this plugin as a GitHub Action. The
+`cache-expiry` option is not available when using the action, as the cache is
+not persisted between runs.
 
 ## Development setup and Contributing
 
