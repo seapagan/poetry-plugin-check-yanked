@@ -24,8 +24,8 @@ This plugin could be added to a pre-commit hook to check for yanked packages
 before running any other checks or tests.
 !!! tip
 
-    There is also a GitHub Action for this plugin that can be run for all
-    pull-requests to ensure that all dependencies are up-to-date and not yanked.
+    There is also a GitHub Action for this plugin that can be run automatically
+    to ensure that all dependencies are up-to-date and not yanked.
 
 This plugin was written to learn how to write a Poetry plugin and to scratch an
 itch I had for a tool like this. I have more [ideas](todo.md) for features and
