@@ -22,10 +22,10 @@ requests to PyPI (and speed up future runs).
 
 This plugin could be added to a pre-commit hook to check for yanked packages
 before running any other checks or tests.
+!!! tip
 
-It should ideally be run using the `-full` option before releasing a new version
-of a project to ensure that all dependencies are up-to-date and not yanked, or
-in a GitHub Action or similar CI/CD pipeline.
+    There is also a GitHub Action for this plugin that can be run automatically
+    to ensure that all dependencies are up-to-date and not yanked.
 
 This plugin was written to learn how to write a Poetry plugin and to scratch an
 itch I had for a tool like this. I have more [ideas](todo.md) for features and
