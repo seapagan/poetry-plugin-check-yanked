@@ -6,6 +6,31 @@ project since the first release, with the latest changes at the top.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [Unreleased](https://github.com/seapagan/poetry-plugin-check-yanked/tree/HEAD)
+
+
+These are the changes that have been merged to the repository since the last
+release. If you want to try out these changes, you can install the latest
+version from the main branch by running:
+
+```console
+$ pip install git+https://github.com/seapagan/github-changelog-md
+```
+
+or, if using poetry:
+
+```console
+$ poetry add git+https://github.com/seapagan/github-changelog-md
+```
+Everything in this section will be included in the next official release.
+
+
+**Merged Pull Requests**
+
+- Fix some lint issues ([#26](https://github.com/seapagan/poetry-plugin-check-yanked/pull/26)) by [seapagan](https://github.com/seapagan)
+
+[`Full Changelog`](https://github.com/seapagan/poetry-plugin-check-yanked/compare/v0.3.0...HEAD) | [`Diff`](https://github.com/seapagan/poetry-plugin-check-yanked/compare/v0.3.0...HEAD.diff) | [`Patch`](https://github.com/seapagan/poetry-plugin-check-yanked/compare/v0.3.0...HEAD.patch)
+
 ## [v0.3.0](https://github.com/seapagan/poetry-plugin-check-yanked/releases/tag/v0.3.0) (June 24, 2024)
 
 **New Features**
