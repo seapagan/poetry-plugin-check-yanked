@@ -37,7 +37,7 @@ checker = "poetry_plugin_check_yanked.plugin:CheckYankedPlugin"
 python = ">=3.9,<4.0"
 poetry = ">=1.6.0"
 rtoml = ">=0.10.0"
-requests = "^2.32.3"
+requests = "2.32.0"
 pickledb = "^0.9.2"
 platformdirs = "^4.2.2"
 
