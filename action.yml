@@ -24,11 +24,11 @@ runs:
           echo "project_checked_out=false" >> $GITHUB_ENV
         fi
 
-        if command -v python &>/dev/null; then
-          version=$(python --version | cut -d ' ' -f 2)
-          echo "python_version=$version" >> $GITHUB_ENV
+        python_path=$(which python)
+        if [[ "$python_path" == "/opt/hostedtoolcache/Python/"* ]]; then
+          echo "python_installed_by_setup=true" >> $GITHUB_ENV
         else
-          echo "python_version=none" >> $GITHUB_ENV
+          echo "python_installed_by_setup=false" >> $GITHUB_ENV
         fi
       shell: bash
 
@@ -37,7 +37,7 @@ runs:
       uses: actions/checkout@v4
 
     - name: Set up Python
-      if: ${{ env.python_version == 'none' }}
+      if: ${{ env.python_installed_by_setup == 'false' }}
       uses: actions/setup-python@v5
       with:
         python-version: ${{ inputs.python-version }}
