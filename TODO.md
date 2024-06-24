@@ -10,4 +10,5 @@
 - add defined expiry periods for the config file = "1h","1d", "1w", "1m", etc.
   Make the suffix apply to the period as well so you can have "1h", "2h",
   "3h",etc
-- add config to make this a github action
+- if `potry.lock` is missing, catch the error and suggest running `poetry
+  install` to create it
