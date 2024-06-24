@@ -6,9 +6,28 @@ project since the first release, with the latest changes at the top.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
-## [v0.2.2](https://github.com/seapagan/poetry-plugin-check-yanked/releases/tag/v0.2.2) (June 18, 2024)
+## [v0.3.0](https://github.com/seapagan/poetry-plugin-check-yanked/releases/tag/v0.3.0) (June 24, 2024)
 
-**_'0.2.2 (Security Release)'_**
+**New Features**
+
+- Catch missing `poetry.lock` file ([#22](https://github.com/seapagan/poetry-plugin-check-yanked/pull/22)) by [seapagan](https://github.com/seapagan)
+- Add an option to hide the progress bar while still showing other output ([#21](https://github.com/seapagan/poetry-plugin-check-yanked/pull/21)) by [seapagan](https://github.com/seapagan)
+- Add a GitHub action configuration ([#19](https://github.com/seapagan/poetry-plugin-check-yanked/pull/19)) by [seapagan](https://github.com/seapagan)
+
+**Documentation**
+
+- Document the GitHub Action functionality ([#20](https://github.com/seapagan/poetry-plugin-check-yanked/pull/20)) by [seapagan](https://github.com/seapagan)
+
+**Dependency Updates**
+
+- Bump types-requests from 2.32.0.20240602 to 2.32.0.20240622 ([#18](https://github.com/seapagan/poetry-plugin-check-yanked/pull/18)) by [dependabot[bot]](https://github.com/apps/dependabot)
+- Bump ruff from 0.4.9 to 0.4.10 ([#17](https://github.com/seapagan/poetry-plugin-check-yanked/pull/17)) by [dependabot[bot]](https://github.com/apps/dependabot)
+- Bump faker from 25.8.0 to 25.9.1 ([#16](https://github.com/seapagan/poetry-plugin-check-yanked/pull/16)) by [dependabot[bot]](https://github.com/apps/dependabot)
+- Bump github-changelog-md from 0.9.3 to 0.9.4 ([#15](https://github.com/seapagan/poetry-plugin-check-yanked/pull/15)) by [dependabot[bot]](https://github.com/apps/dependabot)
+
+[`Full Changelog`](https://github.com/seapagan/poetry-plugin-check-yanked/compare/v0.2.2...v0.3.0) | [`Diff`](https://github.com/seapagan/poetry-plugin-check-yanked/compare/v0.2.2...v0.3.0.diff) | [`Patch`](https://github.com/seapagan/poetry-plugin-check-yanked/compare/v0.2.2...v0.3.0.patch)
+
+## [v0.2.2](https://github.com/seapagan/poetry-plugin-check-yanked/releases/tag/v0.2.2) (June 18, 2024)
 
 
 **Security Update**
@@ -24,8 +43,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [v0.2.1](https://github.com/seapagan/poetry-plugin-check-yanked/releases/tag/v0.2.1) (June 17, 2024)
 
-**_'0.2.1'_**
-
 **Bug Fixes**
 
 - Fix plugin description spanning lines ([#11](https://github.com/seapagan/poetry-plugin-check-yanked/pull/11)) by [seapagan](https://github.com/seapagan)
@@ -39,8 +56,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [v0.2.0](https://github.com/seapagan/poetry-plugin-check-yanked/releases/tag/v0.2.0) (June 14, 2024)
 
-**_'0.2.0'_**
-
 **New Features**
 
 - Implement caching to store the yanked status of already checked libraries. ([#6](https://github.com/seapagan/poetry-plugin-check-yanked/pull/6)) by [seapagan](https://github.com/seapagan)
@@ -53,14 +68,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [v0.1.1](https://github.com/seapagan/poetry-plugin-check-yanked/releases/tag/v0.1.1) (June 11, 2024)
 
-**_'0.1.1'_**
-
 A quick release to lower the required version of Poetry to 1.6.0 and add PyPI trove classifiers
 [`Full Changelog`](https://github.com/seapagan/poetry-plugin-check-yanked/compare/v0.1.0...v0.1.1) | [`Diff`](https://github.com/seapagan/poetry-plugin-check-yanked/compare/v0.1.0...v0.1.1.diff) | [`Patch`](https://github.com/seapagan/poetry-plugin-check-yanked/compare/v0.1.0...v0.1.1.patch)
 
 ## [v0.1.0](https://github.com/seapagan/poetry-plugin-check-yanked/releases/tag/v0.1.0) (June 11, 2024)
-
-**_'0.1.0'_**
 
 This is the first release.
 
