@@ -12,7 +12,6 @@
   "3h",etc
 - if `poetry.lock` is missing, catch the error and suggest running `poetry
   install` to create it
-- add option to just hide the progress bar
 
 ## Taking this further
 
