@@ -50,16 +50,11 @@ runs:
         virtualenvs-in-project: true
         installer-parallel: true
 
-    # - name: Install dependencies
-    #   run: poetry install
-    #   shell: bash
-    #   working-directory: ${{ inputs.path }}
-
     - name: Install poetry-plugin-check-yanked
       run: poetry self add poetry-plugin-check-yanked
       shell: bash
 
     - name: Run poetry check-yanked
-      run: poetry check-yanked --full --verbose
+      run: poetry check-yanked --full
       shell: bash
       working-directory: ${{ inputs.path }}
