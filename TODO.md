@@ -10,4 +10,19 @@
 - add defined expiry periods for the config file = "1h","1d", "1w", "1m", etc.
   Make the suffix apply to the period as well so you can have "1h", "2h",
   "3h",etc
-- add config to make this a github action
+- if `poetry.lock` is missing, catch the error and suggest running `poetry
+  install` to create it
+- add option to just hide the progress bar
+
+## Taking this further
+
+Write a non-poetry version that can be used with any project that has a
+supported lock file, and a way of determining if a project is 'yanked' or not:
+
+- `requirements.txt` file
+- `Pipfile`
+- yarn.lock
+- package-lock.json
+- Gemfile.lock
+- cargo.lock
+- etc?

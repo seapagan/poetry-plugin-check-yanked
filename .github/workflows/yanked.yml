@@ -1,0 +1,11 @@
+name: Check for Yanked Packages
+
+on: [push, pull_request]
+
+jobs:
+  check-yanked:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run poetry check-yanked
+        uses: seapagan/poetry-plugin-check-yanked@v1
