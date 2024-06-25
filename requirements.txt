@@ -34,7 +34,7 @@ pywin32-ctypes==0.2.2 ; python_version >= "3.9" and python_version < "4.0" and s
 rapidfuzz==3.9.3 ; python_version >= "3.9" and python_version < "4.0"
 requests-toolbelt==1.0.0 ; python_version >= "3.9" and python_version < "4.0"
 requests==2.32.3 ; python_version >= "3.9" and python_version < "4.0"
-rtoml==0.10.0 ; python_version >= "3.9" and python_version < "4.0"
+rtoml==0.11.0 ; python_version >= "3.9" and python_version < "4.0"
 secretstorage==3.3.3 ; python_version >= "3.9" and python_version < "4.0" and sys_platform == "linux"
 shellingham==1.5.4 ; python_version >= "3.9" and python_version < "4.0"
 tomli==2.0.1 ; python_version >= "3.9" and python_version < "3.11"
