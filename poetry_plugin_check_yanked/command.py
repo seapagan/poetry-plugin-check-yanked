@@ -16,11 +16,12 @@ from poetry.console.commands.command import Command
 
 from poetry_plugin_check_yanked import status
 
-if TYPE_CHECKING:
+if TYPE_CHECKING:  # pragma: no cover
     from cleo.io.inputs.option import Option
 
 
 ONE_DAY = 86400
+DEFAULT_TIMEOUT = 10
 
 
 class CheckYankedCommand(Command):
@@ -63,7 +64,7 @@ class CheckYankedCommand(Command):
         self.yanked_packages: list[
             tuple[str, str, dict[str, str | bool | None]]
         ] = []
-        self.timeout_seconds = 10
+        self.timeout_seconds = DEFAULT_TIMEOUT
 
     def handle(self) -> int:
         """Handle the command."""
