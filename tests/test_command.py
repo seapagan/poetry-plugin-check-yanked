@@ -30,3 +30,6 @@ def test_check_yanked_command_init(
     assert command.cache is not None
     assert command.yanked_packages == []
     assert command.timeout_seconds == DEFAULT_TIMEOUT
+
+    # just a sanity check to ensure that the mock lockfile was created
+    assert Path("./poetry.lock").exists()
