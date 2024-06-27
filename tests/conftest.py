@@ -48,6 +48,7 @@ content-hash = "sha256:1234567890abcdef1234567890abcdef1234567890abcdef123456789
 
 """  # noqa: E501
 
+# define a fake response from the PyPI API without any yanked packages.
 FAKE_GOOD_RESPONSE = {
     "package-a": {
         "info": {
@@ -91,45 +92,9 @@ FAKE_GOOD_RESPONSE = {
     },
 }
 
-FAKE_YANKED_RESPONSE = {
-    "package-a": {
-        "info": {
-            "name": "package-a",
-            "version": "1.0.0",
-            "yanked": False,
-            "yanked_reason": None,
-        }
-    },
-    "package-b": {
-        "info": {
-            "name": "package-b",
-            "version": "2.0.0",
-            "yanked": True,
-            "yanked_reason": "Yanked for test reasons.",
-        }
-    },
-    "package-c": {
-        "info": {
-            "name": "package-c",
-            "version": "3.0.0",
-            "yanked": False,
-            "yanked_reason": None,
-        }
-    },
-    "package-d": {
-        "info": {
-            "name": "package-d",
-            "version": "4.0.0",
-            "yanked": False,
-            "yanked_reason": None,
-        }
-    },
-    "package-e": {
-        "info": {
-            "name": "package-e",
-            "version": "5.0.0",
-            "yanked": False,
-            "yanked_reason": None,
-        }
-    },
-}
+# define a fake response from the PyPI API with a yanked package.
+FAKE_YANKED_RESPONSE = FAKE_GOOD_RESPONSE
+FAKE_YANKED_RESPONSE["package-b"]["info"]["yanked"] = True
+FAKE_YANKED_RESPONSE["package-b"]["info"]["yanked_reason"] = (
+    "Yanked for testing"
+)
