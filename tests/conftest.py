@@ -1,10 +1,7 @@
 """Set up the test environment."""
 
-from collections.abc import Generator
-
 import pytest
 from pyfakefs.fake_filesystem import FakeFilesystem
-from pyfakefs.fake_filesystem_unittest import Patcher
 from pytest_mock import MockerFixture
 
 FAKE_LOCKFILE = """
@@ -108,11 +105,11 @@ FAKE_YANKED_RESPONSE["package-b"]["info"]["yanked_reason"] = (
 
 
 @pytest.fixture()
-def get_fs(fs: FakeFilesystem) -> Generator[FakeFilesystem, None, None]:
+def get_fs(fs: FakeFilesystem) -> FakeFilesystem:
     """Fixture to use pyfakefs with pytest."""
-    with Patcher():
-        fs.create_dir("/mocked/path")
-        yield fs
+    fs.create_dir("/mocked/path")
+    fs.create_file("./poetry.lock", contents=FAKE_LOCKFILE)
+    return fs
 
 
 @pytest.fixture()
