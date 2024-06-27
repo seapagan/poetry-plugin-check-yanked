@@ -200,9 +200,10 @@ markers = [
   "integration: Integration tests",
   "rewrite: Tests need Rewriting",  # will be skipped automatically
 ]
+testpaths = ["tests"]
 
 [tool.coverage.run]
-# source = []
+source = ["poetry_plugin_check_yanked"]
 omit = ["*/tests/*"]
 concurrency = ["thread", "greenlet"]
 
