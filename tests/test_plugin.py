@@ -10,7 +10,9 @@ def test_factory_returns_check_yanked_command() -> None:
     assert isinstance(factory(), CheckYankedCommand)
 
 
-def test_register_factory_called_with_correct_parameters(mocker) -> None:
+def test_register_factory_called_with_correct_parameters(
+    mocker, get_fs
+) -> None:
     """Ensure that the 'register_factory' method is called correctly."""
     application = mocker.Mock(spec=Application)
     plugin = CheckYankedPlugin()
