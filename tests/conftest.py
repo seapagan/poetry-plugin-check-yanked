@@ -1,6 +1,7 @@
 """Set up the test environment."""
 
 import pytest
+from poetry_plugin_check_yanked.command import CheckYankedCommand
 from pyfakefs.fake_filesystem import FakeFilesystem
 from pytest_mock import MockerFixture
 
@@ -118,3 +119,14 @@ def mock_data_dir(mocker: MockerFixture) -> MockerFixture:
     mock = mocker.patch("platformdirs.user_data_dir")
     mock.return_value = "/mocked/path"
     return mock
+
+
+@pytest.fixture()
+def yank_class(
+    get_fs: FakeFilesystem, mock_data_dir: MockerFixture
+) -> CheckYankedCommand:
+    """Fixture to return the CheckYankedCommand class.
+
+    It also applies the mock filesystem and data directory.
+    """
+    return CheckYankedCommand()
