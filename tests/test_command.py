@@ -1,5 +1,6 @@
 """Tests for the command module."""
 
+import datetime
 from pathlib import Path
 
 from poetry_plugin_check_yanked.command import (
@@ -40,3 +41,18 @@ def test_instantiate_class(
     assert Path("./poetry.lock").exists()
 
     assert yank_class.timeout_seconds == DEFAULT_TIMEOUT
+
+
+def test_timestamp_is_int(yank_class: CheckYankedCommand) -> None:
+    """Test that the cache_expiry is an integer."""
+    timestamp = yank_class.get_timestamp()
+    assert isinstance(timestamp, int)
+
+
+def test_timestamp_is_correct(yank_class: CheckYankedCommand) -> None:
+    """Test that the timestamp returned is correct."""
+    local_timestamp = datetime.datetime.now(
+        tz=datetime.timezone.utc
+    ).timestamp()
+    derived_timestamp = yank_class.get_timestamp()
+    assert derived_timestamp == int(local_timestamp)
