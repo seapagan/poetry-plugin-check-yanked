@@ -1,5 +1,12 @@
 """Set up the test environment."""
 
+from collections.abc import Generator
+
+import pytest
+from pyfakefs.fake_filesystem import FakeFilesystem
+from pyfakefs.fake_filesystem_unittest import Patcher
+from pytest_mock import MockerFixture
+
 FAKE_LOCKFILE = """
 [[package]]
 name = "package-a"
@@ -98,3 +105,19 @@ FAKE_YANKED_RESPONSE["package-b"]["info"]["yanked"] = True
 FAKE_YANKED_RESPONSE["package-b"]["info"]["yanked_reason"] = (
     "Yanked for testing"
 )
+
+
+@pytest.fixture()
+def get_fs(fs: FakeFilesystem) -> Generator[FakeFilesystem, None, None]:
+    """Fixture to use pyfakefs with pytest."""
+    with Patcher():
+        fs.create_dir("/mocked/path")
+        yield fs
+
+
+@pytest.fixture()
+def mock_data_dir(mocker) -> MockerFixture:
+    """Fixture to mock platformdirs.user_data_dir and set return value."""
+    mock = mocker.patch("platformdirs.user_data_dir")
+    mock.return_value = "/mocked/path"
+    return mock
