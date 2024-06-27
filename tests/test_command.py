@@ -6,9 +6,13 @@ from poetry_plugin_check_yanked.command import (
     DEFAULT_TIMEOUT,
     CheckYankedCommand,
 )
+from pyfakefs.fake_filesystem import FakeFilesystem
+from pytest_mock import MockerFixture
 
 
-def test_check_yanked_command_init(get_fs, mocker, mock_data_dir) -> None:
+def test_check_yanked_command_init(
+    get_fs: FakeFilesystem, mocker: MockerFixture, mock_data_dir: MockerFixture
+) -> None:
     """Test the initialization of the CheckYankedCommand class."""
     mock_pickledb_load = mocker.patch("pickledb.load")
     mock_pickledb_load.return_value = mocker.Mock()

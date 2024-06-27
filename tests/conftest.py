@@ -116,7 +116,7 @@ def get_fs(fs: FakeFilesystem) -> Generator[FakeFilesystem, None, None]:
 
 
 @pytest.fixture()
-def mock_data_dir(mocker) -> MockerFixture:
+def mock_data_dir(mocker: MockerFixture) -> MockerFixture:
     """Fixture to mock platformdirs.user_data_dir and set return value."""
     mock = mocker.patch("platformdirs.user_data_dir")
     mock.return_value = "/mocked/path"
