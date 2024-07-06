@@ -2,7 +2,7 @@ application-properties==0.8.2 ; python_version >= "3.9" and python_version < "4.
 babel==2.15.0 ; python_version >= "3.9" and python_version < "4.0"
 build==1.2.1 ; python_version >= "3.9" and python_version < "4.0"
 cachecontrol[filecache]==0.14.0 ; python_version >= "3.9" and python_version < "4.0"
-certifi==2024.6.2 ; python_version >= "3.9" and python_version < "4.0"
+certifi==2024.7.4 ; python_version >= "3.9" and python_version < "4.0"
 cffi==1.16.0 ; python_version >= "3.9" and python_version < "4.0"
 cfgv==3.4.0 ; python_version >= "3.9" and python_version < "4.0"
 charset-normalizer==3.3.2 ; python_version >= "3.9" and python_version < "4.0"
