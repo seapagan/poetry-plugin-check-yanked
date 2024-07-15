@@ -8,4 +8,4 @@ jobs:
 
     steps:
       - name: Run poetry check-yanked
-        uses: seapagan/check-yanked-packages@v1
+        uses: seapagan/check-yanked-packages@check-poetry-install
