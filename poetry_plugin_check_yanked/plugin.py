@@ -21,8 +21,3 @@ class CheckYankedPlugin(ApplicationPlugin):
     def activate(self, application: Application) -> None:
         """Called after the plugin is loaded."""
         application.command_loader.register_factory("check-yanked", factory)
-
-
-if __name__ == "__main__":
-    checker = CheckYankedCommand()
-    checker.handle()
