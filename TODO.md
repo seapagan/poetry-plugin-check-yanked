@@ -16,6 +16,7 @@
 Write a non-poetry version that can be used with any project that has a
 supported lock file, and a way of determining if a project is 'yanked' or not:
 
+- `uv.lock` file
 - `requirements.txt` file
 - `Pipfile`
 - yarn.lock
