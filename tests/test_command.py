@@ -3,6 +3,7 @@
 import datetime
 from pathlib import Path
 
+from cleo.io.inputs.option import Option
 from poetry_plugin_check_yanked.command import (
     DEFAULT_TIMEOUT,
     CheckYankedCommand,
@@ -56,3 +57,22 @@ def test_timestamp_is_correct(yank_class: CheckYankedCommand) -> None:
     ).timestamp()
     derived_timestamp = yank_class.get_timestamp()
     assert derived_timestamp == int(local_timestamp)
+
+
+def test_options_exist(yank_class: CheckYankedCommand) -> None:
+    """Test that the options exist."""
+    assert len(yank_class.options) == 3  # noqa: PLR2004
+
+    for option in yank_class.options:
+        assert isinstance(option, Option)
+    option_names = [option.name for option in yank_class.options]
+    assert "full" in option_names
+    assert "refresh" in option_names
+    assert "no-progress" in option_names
+
+
+def test_class_metadata(yank_class: CheckYankedCommand) -> None:
+    """Test that the class meta is correct."""
+    assert yank_class.name == "check-yanked"
+    assert yank_class.description != ""
+    assert yank_class.help != ""

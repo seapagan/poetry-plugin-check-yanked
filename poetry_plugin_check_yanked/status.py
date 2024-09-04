@@ -3,7 +3,7 @@
 This is the 'status' module from 'starlette' without change, except removing the
 WebSocket status codes.
 
-I cant find a decent library that works the same way as 'starlette' for HTTP
+I can't find a decent library that works the same way as 'starlette' for HTTP
 status codes, so I'm copying this module here. All rights reserved to the
 original authors.
 """
