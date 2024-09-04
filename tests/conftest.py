@@ -101,7 +101,7 @@ FAKE_YANKED_RESPONSE["package-b"]["info"]["yanked_reason"] = (
 )
 
 
-@pytest.fixture()
+@pytest.fixture
 def get_fs(fs: FakeFilesystem) -> FakeFilesystem:
     """Fixture to use pyfakefs with pytest."""
     fs.create_dir("/mocked/path")
@@ -109,7 +109,7 @@ def get_fs(fs: FakeFilesystem) -> FakeFilesystem:
     return fs
 
 
-@pytest.fixture()
+@pytest.fixture
 def mock_data_dir(mocker: MockerFixture) -> MockerFixture:
     """Fixture to mock platformdirs.user_data_dir and set return value."""
     mock = mocker.patch("platformdirs.user_data_dir")
@@ -117,7 +117,7 @@ def mock_data_dir(mocker: MockerFixture) -> MockerFixture:
     return mock
 
 
-@pytest.fixture()
+@pytest.fixture
 def yank_class(
     get_fs: FakeFilesystem, mock_data_dir: MockerFixture
 ) -> CheckYankedCommand:
